@@ -17,4 +17,11 @@ Align 3 of the same symbols to win!
 Compiled using gcc version 10.2.1 on Debian 10.2.1-6.
 
 Options : `-Wall -Wextra -g`
+
 Memory leak tool : `Valgrind`
+
+### Quick use
+
+`gcc *.c -o Casino -Wall -Wextra -g`
+
+`./Casino`
