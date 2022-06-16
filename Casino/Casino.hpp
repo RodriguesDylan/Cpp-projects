@@ -4,11 +4,12 @@
 // libraries
 #include <cstdlib>
 #include <iostream>
+#include <ctime>
+#include <string>
 
 using namespace std;
 
 class Casino {
-
 public:
   Casino(){};
   ~Casino(){};
@@ -18,15 +19,6 @@ public:
   void SelectedGameProcess(int gameNumber);
 };
 
-class RandomNumberGuesser {
 
-public:
-  RandomNumberGuesser(){};
-  ~RandomNumberGuesser(){};
-
-  void StartMessage();
-  void Rules();
-  void GameRNG();
-};
 
 #endif
