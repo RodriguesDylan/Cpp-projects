@@ -8,7 +8,7 @@ int main() {
   std::cout << "-- BEGIN --\n";
 
   Casino gameInstance;
-  int gameNumber;
+  int gameNumber=1;
 
   gameInstance.Welcome();
 
