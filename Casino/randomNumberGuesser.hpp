@@ -12,6 +12,7 @@ public:
   void StartMessage();
   void Rules();
   void GameRNG();
+  void GameLoop(RandomNumberGuesser rng);
 };
 
 #endif

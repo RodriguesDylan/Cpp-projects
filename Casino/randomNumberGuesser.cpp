@@ -33,3 +33,21 @@ void RandomNumberGuesser::GameRNG() {
          << "The number was " << number << "!\n";
   }
 }
+
+void RandomNumberGuesser::GameLoop(RandomNumberGuesser rng){
+  bool update = false;  //loop controller
+  string answer = "";
+  rng.StartMessage();
+  rng.Rules();
+  do {
+    rng.GameRNG();
+    cout << "Continue? (y/n)\n";
+    cin >> answer;
+    if (answer == "n") {
+      update = false;
+    } else {
+      update = true;
+    }
+  } while (update);
+  
+}
