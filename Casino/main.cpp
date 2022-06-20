@@ -8,19 +8,21 @@
 int main() {
   std::cout << "-- BEGIN --\n";
 
-  Casino gameInstance;
-  Database db;
+  Casino gameInstance; // game
+  Database db;         // database
   int gameNumber = 1;
 
   if (!db.exists_test("database.txt")) {
+    // create db if not already created
     cout << "New database created!\n";
     db.initDB();
   }
 
+  db.Logindb();
   gameInstance.Welcome();
 
   while (gameNumber > 0) {
-
+    // game loop
     gameNumber = gameInstance.GameSelect();
     gameInstance.SelectedGameProcess(gameNumber);
   }
