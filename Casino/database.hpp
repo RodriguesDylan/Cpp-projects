@@ -16,6 +16,7 @@ public:
   void initDB();
   void Logindb();
   void clearDB();
+  bool exists_test(const std::string &name);
 };
 
 #endif
