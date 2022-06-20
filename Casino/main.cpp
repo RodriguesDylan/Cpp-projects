@@ -1,5 +1,6 @@
 // headers
 #include "casino.hpp"
+#include "database.hpp"
 
 // --- CASINO GAME ---
 // by Dylan RODRIGUES - 2022
@@ -8,12 +9,18 @@ int main() {
   std::cout << "-- BEGIN --\n";
 
   Casino gameInstance;
-  int gameNumber=1;
+  Database db;
+  int gameNumber = 1;
+
+  if (!db.exists_test("database.txt")) {
+    cout << "New database created!\n";
+    db.initDB();
+  }
 
   gameInstance.Welcome();
 
-  while (gameNumber>0) {
-    
+  while (gameNumber > 0) {
+
     gameNumber = gameInstance.GameSelect();
     gameInstance.SelectedGameProcess(gameNumber);
   }
