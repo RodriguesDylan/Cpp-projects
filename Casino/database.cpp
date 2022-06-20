@@ -49,8 +49,13 @@ void Database::clearDB() {
 }
 
 void Database::initDB() {
-    fstream file("database.txt", ios::app);
-    file << "username=user balance=100\n";
-    file << "username=admin balance=1000000\n";
-    file.close();
+  fstream file("database.txt", ios::app);
+  file << "username=user balance=100\n";
+  file << "username=admin balance=1000000\n";
+  file.close();
+}
+
+bool Database::exists_test(const std::string &name) {
+  ifstream f(name.c_str());
+  return f.good();
 }
