@@ -9,13 +9,13 @@ void SlotMachine::Rules() {
   cout << "Roll the machine and align 3 symbols to win.\n"
        << "[$] [$] [$] = Jackpot       "
        << "[a] [a] [a] = Win 2xbet\n"
-       << "[b] [b] [b] = Win 5x bet\n";
+       << "[b] [b] [b] = Win 5x bet\n"
+       << "Ready? Let's roll!\n";
 }
 
 void SlotMachine::GameSlot() {
   string symbols = "$ab";
   string slotResult = "";
-  cout << "---------------\n";
 
   for (int i = 0; i < 3; ++i) {
     // nanosecond time for the random number generator
@@ -24,18 +24,25 @@ void SlotMachine::GameSlot() {
     auto epoch = now_ns.time_since_epoch();
     auto value = std::chrono::duration_cast<std::chrono::nanoseconds>(epoch);
     unsigned int intedValue = value.count();
-
     srand(intedValue);
+
     slotResult.push_back(symbols[rand() % 3]);
   }
-  cout << "| [" << slotResult[0] << "] "
+  cout << "---------------\n"
+       << "| [" << slotResult[0] << "] "
        << "[" << slotResult[1] << "] "
-       << "[" << slotResult[2] << "] |\n";
-  cout << "---------------\n";
+       << "[" << slotResult[2] << "] |\n"
+       << "---------------\n";
+
+  if (slotResult[0] == slotResult[1] && slotResult[1] == slotResult[2]) {
+    cout << "You win!\n";
+  } else {
+    cout << "You lose...\n";
+  }
 }
 
 void SlotMachine::GameLoop(SlotMachine sm) {
-  bool update = false;  //loop controller
+  bool update = false; // loop controller
   string answer = "";
   sm.StartMessage();
   sm.Rules();
