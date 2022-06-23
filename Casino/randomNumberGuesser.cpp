@@ -12,17 +12,20 @@ void RandomNumberGuesser::Rules() {
 void RandomNumberGuesser::GameRNG() {
   srand(time(nullptr));
   int number = rand() % 10;
+  string answer;
   int guessedNumber;
 
   // validity loop
   do {
     cout << "Choose a number between 0 and 10 : \n";
-    cin >> guessedNumber;
+    cin >> answer;
+    guessedNumber = stoi(answer);
 
     if (guessedNumber > 10 || guessedNumber < 0) {
       cout << "Must be between 0 and 10 ! \n";
+      guessedNumber = -1;
     }
-
+    
   } while (guessedNumber > 10 || guessedNumber < 0);
 
   // result

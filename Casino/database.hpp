@@ -8,6 +8,8 @@
 #include <vector>
 
 class Database {
+  string user;
+  string balance;
 public:
   Database() {}
   ~Database() {}

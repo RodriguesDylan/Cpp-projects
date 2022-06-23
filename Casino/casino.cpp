@@ -1,64 +1,41 @@
+// libraries
+
 // headers
-#include "database.hpp"
-#include <ios>
-#include <string>
+#include "casino.hpp"
+#include "SlotMachine.hpp"
+#include "randomNumberGuesser.hpp"
 
-string *Database::ProcessLine(string line, string *array) {
-  // line is in the form : "username=foo balance=foo"
-  string delimiter = " ";
-  size_t pos = 0;
-  pos = line.find(delimiter);
-  array[0] = line.substr(0, pos);
-  array[1] = line.substr(pos);
-  return array;
-}
+// Casino methods
+void Casino::Welcome() { cout << "Welcome to our Casino!\n"; }
 
-void Database::Logindb() {
-  fstream file("database.txt");
-  string userName = "";
-  string line = "";
-  string usernameBalance[2];
-  bool control = false;
-
-  cout << "What's your name?\n";
-  cin >> userName;
-  while (getline(file, line) && !control) {
-    // process line
-    ProcessLine(line, usernameBalance);
-    if (("username=" + userName) == usernameBalance[0]) {
-      control = true;
-      cout << "Welcome " << userName << ".\t"
-           << "Your balance is " << usernameBalance[1] << "$.\n";
+int Casino::GameSelect() {
+  int chosenGame = 0; // game identifier
+  cout << "Select a game by entering a number :\n"
+       << "1 : RandomNumberGuesser      2 : SlotMachine"
+       << "\n"
+       << "0 : Leave the casino.\n";
+  do {
+    cin >> chosenGame;
+    if (chosenGame < 0 || chosenGame > 2) {
+      cout << "Must be a valid number!\n";
     }
+  } while (chosenGame < 0 || chosenGame > 2);
+
+  return chosenGame;
+}
+
+void Casino::SelectedGameProcess(int gameNumber) {
+  RandomNumberGuesser rng;
+  SlotMachine sm;
+  switch (gameNumber) {
+  case 0:
+    cout << "Goodbye!\n";
+    break;
+  case 1:
+    rng.GameLoop(rng);
+    break;
+  case 2:
+    sm.GameLoop(sm);
+    break;
   }
-  if (!control) {
-    fstream file("database.txt", ios::app);
-    cout << "Looks like you are new to the Casino!\n"
-         << "We will create your account with this username and offer you "
-            "100$!\n";
-    file << "username=" + userName + " balance=100\n";
-    file.close();
-  }
-  file.close();
-  
-  this->user = userName;
-  this->balance = usernameBalance[1];
-}
-
-void Database::clearDB() {
-  ofstream file;
-  file.open("database.txt", std::ofstream::out | std::ofstream::trunc);
-  file.close();
-}
-
-void Database::initDB() {
-  fstream file("database.txt", ios::app);
-  file << "username=user balance=100\n";
-  file << "username=admin balance=1000000\n";
-  file.close();
-}
-
-bool Database::exists_test(const std::string &name) {
-  ifstream f(name.c_str());
-  return f.good();
 }
