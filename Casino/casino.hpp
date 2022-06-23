@@ -1,27 +1,24 @@
 // guard
-#ifndef DB_H_
-#define DB_H_
-// headers
-#include "casino.hpp"
-// libs
-#include <fstream>
-#include <vector>
+#ifndef CASINO_H_
+#define CASINO_H_
+// libraries
+#include <cstdlib>
+#include <iostream>
+#include <ctime>
+#include <string>
 
-class Database {
-  string user;
-  string balance;
+using namespace std;
 
+class Casino {
 public:
-  Database() {}
-  ~Database() {}
+  Casino(){};
+  ~Casino(){};
 
-  string &getUser() { return user; }
-  string &getBalance() { return balance; }
-  string *ProcessLine(string line, string *array);
-  void initDB();
-  void Logindb();
-  void clearDB();
-  bool exists_test(const std::string &name);
+  void Welcome();
+  int GameSelect();
+  void SelectedGameProcess(int gameNumber);
 };
+
+
 
 #endif
