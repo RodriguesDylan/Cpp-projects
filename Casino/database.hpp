@@ -7,17 +7,21 @@
 #include <fstream>
 #include <vector>
 
-class Database {
-  string user;
-  string balance;
+class Database
+{
 public:
+  string user;
+  int balance;
+
   Database() {}
   ~Database() {}
 
   string *ProcessLine(string line, string *array);
+  string eraseSubStr(string &mainStr, string toErase);
   void initDB();
   void Logindb();
   void clearDB();
+  void updateDB();
   bool exists_test(const std::string &name);
 };
 
