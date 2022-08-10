@@ -19,4 +19,4 @@ To do :
 
 No known bugs.
 
-gcc *.cpp -o casino -Wall -Wextra -g
+```gcc *.cpp -o casino -Wall -Wextra -g```
