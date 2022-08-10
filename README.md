@@ -12,6 +12,8 @@ Casino simulation with some games.
 ## _TO DO_
 
 Login and registration system with password project.
+
 Sudoku game solver project.
+
 Flappy bird type game project.
 
