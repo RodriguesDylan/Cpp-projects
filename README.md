@@ -1,5 +1,5 @@
 # Cpp-projects
-Various personal cpp projects.
+Various personal cpp projects with a generic Makefile included.
 
 ## Casino
 
