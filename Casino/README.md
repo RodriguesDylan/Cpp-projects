@@ -9,14 +9,18 @@ Games featured:
    
 To do : 
 
-> Add balance update on games
+- [ ] Add balance update on games
 
-> Makefile
+- [x] Makefile
 
-> Cleanup and valgrind compliance
+- [ ] Cleanup and valgrind compliance
 
 ## Bugs
 
-No known bugs.
+Issue #1
+---
+Known bug when trying to input char instead of number between 1 and 10 when asked (core dump).
 
-```gcc *.cpp -o casino -Wall -Wextra -g```
+- [ ] Add input sanitization.
+
+
