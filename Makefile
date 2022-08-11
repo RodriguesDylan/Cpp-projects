@@ -1,7 +1,7 @@
 # For cpp projects 
 # Dylan Rodrigues 2022
 # Usage :
-# make				# compile source code into objects into executable	
+# make			# compile source code into objects into executable	
 # make clean		# remove all objects
 # make fullclean 	# remove all objects and executable
 # make debug		# print source files and object files
