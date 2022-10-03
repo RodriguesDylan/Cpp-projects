@@ -30,6 +30,8 @@ clean:
 	rm $(OBJETS)
 clear:
 	rm $(EXEC)
+	rm graph.dot
+	rm graph.pdf
 depend:
 	sed -e "/^#DEPENDANCIES/,$$ d" Makefile >dependances
 	echo "#DEPENDANCIES" >> dependances
